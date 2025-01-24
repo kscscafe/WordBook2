@@ -1,0 +1,169 @@
+/* Gridに関連するプロパティのみ抜粋 */
+.Header {
+  position: fixed; /* ヘッダーを固定 */
+  top: 0; /* ページ上部に配置 */
+  left: 0; /* ページ左端に配置 */
+  width: 100%; /* ヘッダーを画面幅いっぱいにする */
+  background-color: #ffffff; /* 背景色を白に設定 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 下に影をつける */
+  z-index: 1000; /* 他の要素より前面に表示 */
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 20px;
+  padding: 10px 20px; /* 内側の余白を追加 */
+}
+
+.Header__List {
+  display: flex; /* ボタンを横並びにする */
+  justify-content: space-between; /* ボタン間を均等に配置 */
+  gap: 5px; /* ボタン間のスペース */
+  list-style: none; /* リストスタイルを削除 */
+  padding: 0; /* デフォルトの余白を削除 */
+  margin: 0; /* デフォルトの余白を削除 */
+  max-width: 800%;
+  width: 50%;
+  height: auto;
+}
+
+.Header__List a {
+  display: flex; /* フレックスボックスで中央揃え */
+  justify-content: center; /* 左右の中央揃え */
+  align-items: center; /* 上下の中央揃え */
+  text-decoration: none; /* 下線を削除 */
+  background-color: #007bff; /* 青 */
+  color: #ffffff; /* 白 */
+  padding: 8px 10px; /* 内側の余白を調整 */
+  border-radius: 5px; /* 角を丸くする */
+  font-size: 12px; /* フォントサイズ */
+  font-weight: bold; /* 太字 */
+  transition: background-color 0.3s ease; /* ホバー時のアニメーション */
+}
+
+/* リストアイテム（li）の間隔を調整 */
+.Header__List li {
+  display: inline-block; /* 横並びにする */
+  margin-right: 10px; /* ボタン間の間隔を設定 */
+}
+
+
+/* ホバー時のスタイル */
+.Header__List a:hover {
+  background-color: #0056b3; /* 濃い青 */
+  color: #ffffff; /* 白 */
+}
+
+/* アクティブ時のスタイル（クリック時） */
+.Header__List a:active {
+  background-color: #004085; /* さらに濃い青 */
+  color: #ffffff; /* 白 */
+}
+
+/* アクティブなボタンのスタイル */
+.Header__List a.active {
+  background-color: #28a745; /* 緑色 */
+  color: #ffffff; /* 白文字 */
+}
+
+
+/* 全体のスタイル */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 0.8;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+#word-container {
+  margin-top: 0px; /* 固定ヘッダーの高さ分余白を追加 */
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 単語セクション */
+.word-section {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* グリッド構成 */
+.grid {
+  display: grid;
+  grid-template-columns: 10px 1fr 5fr; /* 左右のレイアウト比率 */
+  gap: 10px;
+}
+
+/* 左側のスタイル */
+.left {
+  display: flex;
+  flex-direction: column; /* 縦並びにする */
+  justify-content: center;
+  height: 100%; /* 要素間の隙間を調整 */
+}
+
+.left .no {
+  order: 1; 
+  font-size: 14px;
+  font-weight: bold;
+  color: #888;
+}
+
+.center {
+  display: flex;
+  flex-direction: column; /* 縦並びにする */
+  justify-content: center;
+  height: 100%; /* 要素間の隙間を調整 */
+}
+
+.center .pinyin {
+  order: 1; 
+  font-size: 14px;
+  color: #555;
+  align-self: center;
+}
+
+.center .word {
+  order: 2; 
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  align-self: center;
+}
+
+/* 右側のスタイル */
+.right {
+  text-align: left;
+}
+
+.right .meaning {
+  font-size: 16px;
+  font-weight: bold;
+  color: #444;
+}
+
+.right hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 5px 0;
+}
+
+.right .example-pinyin {
+  font-size: 12px;
+  color: #777;
+}
+
+.right .example-chinese {
+  font-size: 16px;
+  color: #333;
+}
+
+.right .example-meaning {
+  font-size: 12px;
+  font-style: italic;
+  color: #555;
+}
