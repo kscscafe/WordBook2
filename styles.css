@@ -11,18 +11,22 @@
   grid-template-columns: auto 1fr;
   column-gap: 20px;
   padding: 10px 20px; /* 内側の余白を追加 */
+  align-items: center;
 }
 
 .Header__List {
   display: flex; /* ボタンを横並びにする */
-  justify-content: space-between; /* ボタン間を均等に配置 */
-  gap: 5px; /* ボタン間のスペース */
+ /* justify-content: space-around;*/ /* ボタン間を均等に配置 */
+  gap: 3px; /* ボタン間のスペース */
   list-style: none; /* リストスタイルを削除 */
   padding: 0; /* デフォルトの余白を削除 */
   margin: 0; /* デフォルトの余白を削除 */
-  max-width: 800%;
-  width: 50%;
+  max-width: 100%;
+  width: 100%;
   height: auto;
+  overflow-x: auto;
+  white-space: nowrap;
+  flex-wrap: wrap;
 }
 
 .Header__List a {
@@ -42,7 +46,7 @@
 /* リストアイテム（li）の間隔を調整 */
 .Header__List li {
   display: inline-block; /* 横並びにする */
-  margin-right: 10px; /* ボタン間の間隔を設定 */
+  margin-right: 5px; /* ボタン間の間隔を設定 */
 }
 
 
@@ -94,7 +98,7 @@ body {
 /* グリッド構成 */
 .grid {
   display: grid;
-  grid-template-columns: 10px 1fr 5fr; /* 左右のレイアウト比率 */
+  grid-template-columns: 1fr 5fr; /* 左右のレイアウト比率 */
   gap: 10px;
 }
 
@@ -108,7 +112,7 @@ body {
 
 .left .no {
   order: 1; 
-  font-size: 14px;
+  font-size: 10px;
   font-weight: bold;
   color: #888;
 }
@@ -118,6 +122,28 @@ body {
   flex-direction: column; /* 縦並びにする */
   justify-content: center;
   height: 100%; /* 要素間の隙間を調整 */
+}
+
+.center .no {
+  order: 1; 
+  /*
+  font-size: 14px;
+  font-weight: bold;
+  color: #dc3545;
+  align-self: center;
+*/
+  border: 2px solid #a4a4a4; /* 青色の枠 */
+  color: #ffffff; /* 文字の色も青 */
+  background-color: #a4a4a4; /* ✅ 背景を白 */
+  font-size: 12px;
+  padding: 1px 3px;
+  border-radius: 4px; /* 角丸 */
+  text-align: center;
+  margin: 2px auto; /* ⬅ 左右の `margin` を `auto` にして中央揃え */
+  display: inline-block; /* ⬅ 横幅が内容に合わせて縮小されるようにする */
+  min-width: 20px; /* ⬅ 最小幅を設定（任意） */
+  width: fit-content; /* ⬅ 幅を文字サイズに自動調整 */
+
 }
 
 .center .pinyin {
@@ -140,10 +166,62 @@ body {
   text-align: left;
 }
 
+.meaning-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 意味との間隔 */
+}
+
+/*「訳」ラベルのデザイン */
+.label-translation {
+  display: inline-block;
+  border: 2px solid #dc3545; /* 青色の枠 */
+  color: #ffffff; /* 文字の色も青 */
+  background-color: #dc3545; /* ✅ 背景を白 */
+  font-size: 12px;
+  padding: 2px 2px;
+  border-radius: 4px; /* 角丸 */
+  font-weight: bold;
+  margin-right: 5px; /* ✅ 意味との間隔を調整 */
+  text-align: center;
+  margin: 2px;
+}
+
 .right .meaning {
   font-size: 16px;
   font-weight: bold;
   color: #444;
+  white-space: nowrap; /* ⬅ 強制的に1行にする */
+
+}
+
+/* 文字数が多い場合にフォントサイズを自動調整 */
+@media (max-width: 600px) { /* スマホサイズ */
+  .right .meaning {
+    font-size: 14px; /* ⬅ 文字を小さくする */
+  }
+}
+
+@media (max-width: 400px) { /* さらに小さい画面 */
+  .right .meaning {
+    font-size: 12px; /* ⬅ もっと小さくする */
+  }
+}
+
+.part-label {
+display: flex;
+align-items: center;
+justify-content: center;
+border: 2px solid #007bff; /* 青色の枠 */
+color: #007bff; /* 文字の色も青 */
+font-size: 12px;
+height: 20px;
+line-height: 20px;
+padding: 0px 6px;
+border-radius: 4px; /* 角丸 */
+font-weight: bold;
+margin-left: 5px;
+text-align: center;
 }
 
 .right hr {
@@ -152,18 +230,79 @@ body {
   margin: 5px 0;
 }
 
+/* 例文エリアを横並びにする */
+.example-container {
+  display: flex;
+  align-items: center; /* ✅ 縦方向の中央揃え */
+  gap: 10px; /* ✅ ラベルとテキストの間隔 */
+  background-color: #FFF5EE;
+}
+
+/*「例文」ラベルのデザイン（縦書き＋赤枠＋白抜き） */
+.label-example {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 縦方向の中央揃え */
+  justify-content: center;
+  border: 2px solid #dc3545; /* 赤色の枠 */
+  color: #dc3545; /* 文字を白 */
+  background-color: #ffffff; /* 背景を赤 */
+  font-size: 12px;
+  padding: 6px 2px; /* 縦書き用の余白調整 */
+  border-radius: 4px; /* 角丸 */
+  font-weight: bold;
+  writing-mode: vertical-rl; /* 縦書きに変更 */
+  text-orientation: upright; /* 文字を正しく表示 */
+  height: auto;
+  text-align: center;
+  padding: 4px;
+  margin: 2px;
+}
+
+/* 例文のテキスト（ピンイン・中国語・意味） */
+.example-text {
+  display: flex;
+  flex-direction: column; /* 縦並びに配置 */
+  gap: 2px; /* 例文の間隔を調整 */
+}
+
+
 .right .example-pinyin {
   font-size: 12px;
   color: #777;
+  line-height: 1.2;
 }
 
 .right .example-chinese {
   font-size: 16px;
   color: #333;
+  line-height: 1.2;
 }
 
 .right .example-meaning {
   font-size: 12px;
   font-style: italic;
   color: #555;
+  line-height: 1.2;
 }
+
+.word-input {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.word[data-audio]:hover,
+.example-chinese[data-audio]:hover {
+  color: #646cff;
+  text-decoration: underline;
+}
+
+.tone-1 { background-color: transparent; }
+.tone-2 { background-color: rgba(255, 255, 102, 0.8); } /* 薄い黄色 */
+.tone-3 { background-color: rgba(102, 204, 255, 0.6); } /* 薄い青色 */
+.tone-4 { background-color: rgba(255, 102, 102, 0.6); } /* 薄いピンク色 */
+.tone-5 { background-color: rgba(0, 255, 0, 0.6); } /* 薄い緑色 */
